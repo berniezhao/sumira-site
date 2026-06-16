@@ -25,11 +25,11 @@
     </p>
     <p class="tagline">No trial. No account. Just write.</p>
     <div class="cta">
-      <a class="btn-download"
-         href="https://github.com/berniezhao/sumira-releases/releases/download/v0.3.0/Sumira_0.3.0_aarch64.dmg">
+      <a class="btn-download" id="btn-download"
+         href="https://github.com/berniezhao/sumira-releases/releases/latest">
         DOWNLOAD FREE
       </a>
-      <span class="version">v0.3.0 · macOS 13+</span>
+      <span class="version" id="version-label">macOS 13+</span>
     </div>
   </section>
 
@@ -72,5 +72,20 @@
     </div>
   </footer>
 
+  <script>
+    fetch('https://api.github.com/repos/berniezhao/sumira-releases/releases/latest')
+      .then(r => r.json())
+      .then(data => {
+        const version = data.tag_name;
+        const asset = data.assets.find(a => a.name.endsWith('.dmg'));
+        if (asset) {
+          document.getElementById('btn-download').href = asset.browser_download_url;
+        }
+        if (version) {
+          document.getElementById('version-label').textContent = version + ' · macOS 13+';
+        }
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>
