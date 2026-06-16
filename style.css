@@ -123,15 +123,21 @@ h1 {
 }
 
 /* Screenshot */
+.screenshot-section {
+  background: #1a1614;
+  padding: 48px 40px;
+  margin-top: 0;
+}
+
 .screenshot {
-  margin: 0 40px 0;
-  border: 1px solid var(--border);
-  background: var(--bg-secondary);
+  border: 1px solid #333;
   overflow: hidden;
   min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .screenshot img {
@@ -141,7 +147,7 @@ h1 {
 
 .screenshot-placeholder {
   font-size: 12px;
-  color: var(--text-weak);
+  color: #555;
   font-family: var(--sans);
   letter-spacing: 1px;
   text-transform: uppercase;
